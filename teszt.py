@@ -22,6 +22,7 @@ with open('bbHelyekMasolat.txt', 'w', encoding='utf-8') as kifajl:
                 
                 else:
                     print('0', end = ';', file = kifajl)
+            print('\t', file = kifajl)
         kifajl.close()
 
 print("A szabadon maradt helyek: ")
