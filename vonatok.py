@@ -14,26 +14,35 @@ def jegyfoglalas():
     jegyekSzama=int(input("Adja meg a foglalni kívánt jegyek számát:"))
     sorSzama=int(input("Adja meg a foglalni kívánt üléssor számát:"))
     if jegyekSzama > 0 and sorSzama > 0:
-        for i in range(jegyekSzama):
+        for i in range(1):
             if vonat=="bb":
                 sor = sorSzama
                 helySzukseg = jegyekSzama
                 sorokSzama = 0
-                print("A jelenlegi helyek: ")
-                with open('bbHelyek.txt', 'r', encoding='utf-8') as forrasfajl:
+                foglalthelySor = 0
+                foglalthelyOszlop = 0
+                print("A jegyfoglalas elotti helyek: ")
+                with open('bbHelyekMasolat.txt', 'r', encoding='utf-8') as forrasfajl:
                     for elem in forrasfajl:
                         print(elem)
                         sorokSzama+=1
+                    for i in range(1, (sorokSzama+1)):
+                        for j in range(1, 5):
+                            if(j =="1"):
+                                foglalthelySor = i
+                                foglalthelyOszlop = j
+                            
                 print()
                 with open('bbHelyekMasolat.txt', 'w', encoding='utf-8') as kifajl:
                     for i in range(1, (sorokSzama+1)):
                         for j in range(1, 5):
-                                if(i == sor and helySzukseg > 0):
-                                        print('1', end = ';', file = kifajl)
-                                        helySzukseg -=1
-                
-                                else:
-                                    print('0', end = ';', file = kifajl)
+                                    if(i == sor and helySzukseg > 0):
+                                            print('1', end = ';', file = kifajl)
+                                            helySzukseg -=1
+                                    elif(i==foglalthelySor and j==foglalthelyOszlop):
+                                            print('1', end = ';', file = kifajl)
+                                    else:
+                                        print('0', end = ';', file = kifajl)
                         print('\t', file = kifajl)
                     kifajl.close()
 
