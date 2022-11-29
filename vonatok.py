@@ -25,29 +25,22 @@ def jegyfoglalas():
                 with open('bbHelyekMasolat.txt', 'r', encoding='utf-8') as forrasfajl:
                     for elem in forrasfajl:
                         print(elem)
-                        sorokSzama+=1
-                    for i in range(1, (sorokSzama+1)):
-                        for j in range(1, 5):
-                            if(j =="1"):
-                                foglalthelySor = i
-                                foglalthelyOszlop = j
-                            
+                        sorokSzama+=1                            
                 print()
-                with open('bbHelyekMasolat.txt', 'w', encoding='utf-8') as kifajl:
+                with open('bbHelyek.txt', 'w', encoding='utf-8') as kifajl:
                     for i in range(1, (sorokSzama+1)):
                         for j in range(1, 5):
                                     if(i == sor and helySzukseg > 0):
                                             print('1', end = ';', file = kifajl)
                                             helySzukseg -=1
-                                    elif(i==foglalthelySor and j==foglalthelyOszlop):
-                                            print('1', end = ';', file = kifajl)
                                     else:
                                         print('0', end = ';', file = kifajl)
                         print('\t', file = kifajl)
                     kifajl.close()
+                helySzukseg = jegyekSzama
 
                 print("A szabadon maradt helyek: ")
-                with open('bbHelyekMasolat.txt', 'r', encoding='utf-8') as forrasfajl:
+                with open('bbHelyek.txt', 'r', encoding='utf-8') as forrasfajl:
                     for elem in forrasfajl:
                         print(elem)
                 print()
