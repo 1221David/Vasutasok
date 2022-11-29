@@ -15,8 +15,8 @@ def jegyfoglalas():
     if vonat not in ["bb","bd","bsz"]:
         print("Nincs ilyen vonat+")
         return False
-    foglalas=input("Adja meg a foglalni kívánt jegyek számát:")
-    if foglalas.isdigit and foglalas>0:
+    foglalas=int(input("Adja meg a foglalni kívánt jegyek számát:"))
+    if foglalas>0:
         for i in range(foglalas):
             if vonat=="bb":
                 bb.append(1)
