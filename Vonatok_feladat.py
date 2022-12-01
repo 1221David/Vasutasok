@@ -5,11 +5,12 @@ Egy darab vonatjegy 4000 Forint
 2. feladat, mennyi volt a napi bevétel, (vonatonként)
 szempontok: függvényekben dolgozni, fájlból olvasson be, fájlba írjon ki
 """
-
+    #listak
+#vonatok
 bb=[]
 bd=[]
 bsz=[]
-
+#napok
 h=[]
 k=[]
 sze=[]
@@ -17,49 +18,51 @@ cs=[]
 p=[]
 szo=[]
 v=[]
-
+#hetfoi vonatok
 hbb=[]
 hbd=[]
 hbsz=[]
-
+#keddi vonatok
 kbb=[]
 kbd=[]
 kbsz=[]
-
+#szerdai vonatok
 szebb=[]
 szebd=[]
 szebsz=[]
-
+#csutortoki vonatok
 csbb=[]
 csbd=[]
 csbsz=[]
-
+#penteki vonatok
 pbb=[]
 pbd=[]
 pbsz=[]
-
+#szombati vonatok
 szobb=[]
 szobd=[]
 szobsz=[]
-
+#vasarnapi vonatok
 vbb=[]
 vbd=[]
 vbsz=[]
-
+#jegyfoglalas fuggveny
 def jegyfoglalas():
+    #vonat lekerdezes
     vonat=input("Adja meg a vonatot (bb, bd, bsz):")
     if vonat not in ["bb","bd","bsz"]:
         print("Nincs ilyen vonat+")
         return False
-        
+    #nap lekerdezes
     nap=input("Adja meg melyik napon szeretne utazni: (h, k, sze, cs, p, szo, v):")    
     if nap not in ["h", "k", "sze", "cs", "p", "szo", "v"]:
         print("Nincs ilyen nap")
         return False     
-    
+    #jegy mennyiseg lekerdezes
     foglalas=int(input("Adja meg a foglalni kívánt jegyek számát:"))
     if foglalas>0:
         for i in range(foglalas):
+#budapest-becsi vonatok h-v
             if vonat=="bb" and nap=="h":
                 if (foglalas+len(hbb))<=144:
                     bb.append(1)
@@ -116,7 +119,7 @@ def jegyfoglalas():
                 else:
                     print("elfogyott a jegy erre a járatra")
                     return False       
-
+#budapest-debreceni vonatok h-v
             elif vonat=="bd" and nap=="h":
                 if (foglalas+len(hbd))<=144:
                     bd.append(1)
@@ -173,6 +176,7 @@ def jegyfoglalas():
                 else:
                     print("elfogyott a jegy erre a járatra")
                     return False
+#budapest-szegedi vonatok h-v
             elif vonat=="bsz" and nap=="h":
                 if (foglalas+len(hbsz))<=144:
                     bsz.append(1)
@@ -232,19 +236,18 @@ def jegyfoglalas():
     else:
         print("Ervenytelen jegy mennyiseg!")
         return False
-    
 
     print("Köszönjük a foglalást")
     return True    
 
         
-
+#bevetel szamito fuggveny
 def bevetel():
     elemszam=len(bb)+len(bd)+len(bsz)
     print(elemszam*4000)
 
+#MENU
 opcio=None
-
 while opcio!="kilepes":
     print ("jegyfoglalas","bevetel","kilepes")
     opcio=input("adja meg a menupontot!")
