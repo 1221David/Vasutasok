@@ -10,229 +10,115 @@ szempontok: függvényekben dolgozni, fájlból olvasson be, fájlba írjon ki
 bb=[]
 bd=[]
 bsz=[]
-#napok
-h=[]
-k=[]
-sze=[]
-cs=[]
-p=[]
-szo=[]
-v=[]
-#hetfoi vonatok
-hbb=[]
-hbd=[]
-hbsz=[]
-#keddi vonatok
-kbb=[]
-kbd=[]
-kbsz=[]
-#szerdai vonatok
-szebb=[]
-szebd=[]
-szebsz=[]
-#csutortoki vonatok
-csbb=[]
-csbd=[]
-csbsz=[]
-#penteki vonatok
-pbb=[]
-pbd=[]
-pbsz=[]
-#szombati vonatok
-szobb=[]
-szobd=[]
-szobsz=[]
-#vasarnapi vonatok
-vbb=[]
-vbd=[]
-vbsz=[]
+#napszakok
+de=[]
+d=[]
+du=[]
+#delelotti vonatok
+debb=[]
+debd=[]
+debsz=[]
+#delii vonatok
+dbb=[]
+dbd=[]
+dbsz=[]
+#delutani vonatok
+dubb=[]
+dubd=[]
+dubsz=[]
+
 #jegyfoglalas fuggveny
 def jegyfoglalas():
     #vonat lekerdezes
     vonat=input("Adja meg a vonatot (bb, bd, bsz):")
     if vonat not in ["bb","bd","bsz"]:
-        print("Nincs ilyen vonat+")
+        print("Nincs ilyen vonat")
         return False
-    #nap lekerdezes
-    nap=input("Adja meg melyik napon szeretne utazni: (h, k, sze, cs, p, szo, v):")    
-    if nap not in ["h", "k", "sze", "cs", "p", "szo", "v"]:
-        print("Nincs ilyen nap")
+    #napszak lekerdezes
+    napszak=input("Adja meg melyik napon szeretne utazni: (de, d, du):")    
+    if napszak not in ["de", "d", "du"]:
+        print("Nincs ilyen napszak")
         return False     
     #jegy mennyiseg lekerdezes
     foglalas=int(input("Adja meg a foglalni kívánt jegyek számát:"))
     if foglalas>0:
         for i in range(foglalas):
-#budapest-becsi vonatok h-v
-            if vonat=="bb" and nap=="h":
-                if (foglalas+len(hbb))<=144:
+#budapest-becsi vonatok de-du
+            if vonat=="bb" and napszak=="de":
+                if (foglalas+len(debb))<=48:
                     bb.append(1)
-                    hbb.append(1)
-                    h.append(1)
+                    debb.append(1)
+                    de.append(1)
                 else:
                     print("elfogyott a jegy erre a járatra")
                     return False
-            if vonat=="bb" and nap=="k":
-                if (foglalas+len(kbb))<=144:
+            if vonat=="bb" and napszak=="d":
+                if (foglalas+len(dbb))<=48:
                     bb.append(1)
-                    kbb.append(1)
-                    k.append(1)
+                    dbb.append(1)
+                    d.append(1)
                 else:
                     print("elfogyott a jegy erre a járatra")
                     return False
-            if vonat=="bb" and nap=="sze":
-                if (foglalas+len(szebb))<=144:
+            if vonat=="bb" and napszak=="du":
+                if (foglalas+len(dubb))<=48:
                     bb.append(1)
-                    szebb.append(1)
-                    sze.append(1)
+                    dubb.append(1)
+                    du.append(1)
                 else:
                     print("elfogyott a jegy erre a járatra")
                     return False
-            if vonat=="bb" and nap=="cs":
-                if (foglalas+len(csbb))<=144:
-                    bb.append(1)
-                    csbb.append(1)
-                    cs.append(1)
-                else:
-                    print("elfogyott a jegy erre a járatra")
-                    return False
-            if vonat=="bb" and nap=="p":
-                if (foglalas+len(pbb))<=144:
-                    bb.append(1)
-                    pbb.append(1)
-                    p.append(1)
-                else:
-                    print("elfogyott a jegy erre a járatra")
-                    return False
-            if vonat=="bb" and nap=="szo":
-                if (foglalas+len(szobb))<=144:
-                    bb.append(1)
-                    szobb.append(1)
-                    szo.append(1)
-                else:
-                    print("elfogyott a jegy erre a járatra")
-                    return False
-            if vonat=="bb" and nap=="v":
-                if (foglalas+len(vbb))<=144:
-                    bb.append(1)
-                    vbb.append(1)
-                    v.append(1)
-                else:
-                    print("elfogyott a jegy erre a járatra")
-                    return False       
-#budapest-debreceni vonatok h-v
-            elif vonat=="bd" and nap=="h":
-                if (foglalas+len(hbd))<=144:
+            
+#budapest-debreceni de-du
+            elif vonat=="bd" and napszak=="de":
+                if (foglalas+len(debd))<=48:
                     bd.append(1)
-                    hbd.append(1)
-                    h.append(1)
+                    debd.append(1)
+                    de.append(1)
                 else:
                     print("elfogyott a jegy erre a járatra")
                     return False 
-            elif vonat=="bd" and nap=="k":
-                if (foglalas+len(kbd))<=144:
+            elif vonat=="bd" and napszak=="d":
+                if (foglalas+len(dbd))<=48:
                     bd.append(1)
-                    kbd.append(1)
-                    k.append(1)
+                    dbd.append(1)
+                    d.append(1)
                 else:
                     print("elfogyott a jegy erre a járatra")
                     return False 
-            elif vonat=="bd" and nap=="sze":
-                if (foglalas+len(szebd))<=144:
+            elif vonat=="bd" and napszak=="du":
+                if (foglalas+len(dubd))<=48:
                     bd.append(1)
-                    szebd.append(1)
-                    sze.append(1)
+                    dubd.append(1)
+                    du.append(1)
                 else:
                     print("elfogyott a jegy erre a járatra")
                     return False 
-            elif vonat=="bd" and nap=="cs":
-                if (foglalas+len(csbd))<=144:
-                    bd.append(1)
-                    csbd.append(1)
-                    cs.append(1)
-                else:
-                    print("elfogyott a jegy erre a járatra")
-                    return False 
-            elif vonat=="bd" and nap=="p":
-                if (foglalas+len(pbd))<=144:
-                    bd.append(1)
-                    pbd.append(1)
-                    p.append(1)
-                else:
-                    print("elfogyott a jegy erre a járatra")
-                    return False 
-            elif vonat=="bd" and nap=="szo":
-                if (foglalas+len(szobd))<=144:
-                    bd.append(1)
-                    szobd.append(1)
-                    szo.append(1)
-                else:
-                    print("elfogyott a jegy erre a járatra")
-                    return False 
-            elif vonat=="bd" and nap=="v":
-                if (foglalas+len(vbd))<=144:
-                    bd.append(1)
-                    vbd.append(1)
-                    v.append(1)
-                else:
-                    print("elfogyott a jegy erre a járatra")
-                    return False
-#budapest-szegedi vonatok h-v
-            elif vonat=="bsz" and nap=="h":
-                if (foglalas+len(hbsz))<=144:
+#budapest-szegedi vonatok de-du
+            elif vonat=="bsz" and napszak=="de":
+                if (foglalas+len(debsz))<=48:
                     bsz.append(1)
-                    hbsz.append(1)
-                    h.append(1)
+                    debsz.append(1)
+                    de.append(1)
                 else:
                     print("elfogyott a jegy erre a járatra")
                     return False 
-            elif vonat=="bsz" and nap=="k":
-                if (foglalas+len(kbsz))<=144:
+            elif vonat=="bsz" and napszak=="d":
+                if (foglalas+len(dbsz))<=48:
                     bsz.append(1)
-                    kbsz.append(1)
-                    k.append(1)
+                    dbsz.append(1)
+                    d.append(1)
                 else:
                     print("elfogyott a jegy erre a járatra")
                     return False 
-            elif vonat=="bsz" and nap=="sze":
-                if (foglalas+len(szebsz))<=144:
+            elif vonat=="bsz" and napszak=="du":
+                if (foglalas+len(dubsz))<=48:
                     bsz.append(1)
-                    szebsz.append(1)
-                    sze.append(1)
+                    dubsz.append(1)
+                    du.append(1)
                 else:
                     print("elfogyott a jegy erre a járatra")
                     return False 
-            elif vonat=="bsz" and nap=="cs":
-                if (foglalas+len(csbsz))<=144:
-                    bsz.append(1)
-                    csbsz.append(1)
-                    cs.append(1)
-                else:
-                    print("elfogyott a jegy erre a járatra")
-                    return False 
-            elif vonat=="bsz" and nap=="p":
-                if (foglalas+len(pbsz))<=144:
-                    bsz.append(1)
-                    pbsz.append(1)
-                    p.append(1)
-                else:
-                    print("elfogyott a jegy erre a járatra")
-                    return False 
-            elif vonat=="bsz" and nap=="szo":
-                if (foglalas+len(szobsz))<=144:
-                    bsz.append(1)
-                    szobsz.append(1)
-                    szo.append(1)
-                else:
-                    print("elfogyott a jegy erre a járatra")
-                    return False 
-            elif vonat=="bsz" and nap=="v":
-                if (foglalas+len(vbsz))<=144:
-                    bsz.append(1)
-                    vbsz.append(1)
-                    v.append(1)
-                else:
-                    print("elfogyott a jegy erre a járatra")
-                    return False
     else:
         print("Ervenytelen jegy mennyiseg!")
         return False
