@@ -165,8 +165,9 @@ while opcio!="kilepes":
     if opcio=="jegyfoglalas":
         jegyfoglalas()
     elif opcio=="bevetel":
-        opcio==input("adja meg hogy napszak vagy vonat")
-        if opcio==("napszak"):
+        print("napszak", "vonat")
+        opcio=input("adja meg hogy napszak vagy vonat")
+        if opcio=="napszak":
             print("de", "d", "du")
             opcio=input("adja meg a napszakot!")
             if opcio==("ossz"):
@@ -179,7 +180,7 @@ while opcio!="kilepes":
                 beveteldelutan()
         else:
             print("bb", "bd", "bsz")
-            opcio==input("Adja meg a vonatot")
+            opcio=input("Adja meg a vonatot")
             if opcio==("bb"):
                 bevetelbecsi()
             elif opcio==("bd"):
