@@ -132,6 +132,30 @@ def bevetel():
     elemszam=len(bb)+len(bd)+len(bsz)
     print(elemszam*4000)
 
+def beveteldelelott():
+    delelott=len(de)
+    print(delelott*4000)
+
+def beveteldel():
+    delben=len(d)
+    print(delben*4000)
+
+def beveteldelutan():
+    delutan=len(de)
+    print(delutan*4000)
+
+def bevetelbecsi():
+    becsi=len(bb)
+    print(becsi*4000)
+
+def beveteldebreceni():
+    debreceni=len(bd)
+    print(debreceni*4000)
+
+def bevetelszegedi():
+    szegedi=len(bsz)
+    print(szegedi*4000)
+
 #MENU
 opcio=None
 while opcio!="kilepes":
@@ -141,5 +165,28 @@ while opcio!="kilepes":
     if opcio=="jegyfoglalas":
         jegyfoglalas()
     elif opcio=="bevetel":
-        bevetel()
+        opcio==input("adja meg hogy napszak vagy vonat")
+        if opcio==("napszak"):
+            print("de", "d", "du")
+            opcio=input("adja meg a napszakot!")
+            if opcio==("ossz"):
+                bevetel()
+            elif opcio==("de"):
+                beveteldelelott()
+            elif opcio==("d"):
+                beveteldel()
+            else:
+                beveteldelutan()
+        else:
+            print("bb", "bd", "bsz")
+            opcio==input("Adja meg a vonatot")
+            if opcio==("bb"):
+                bevetelbecsi()
+            elif opcio==("bd"):
+                beveteldebreceni()
+            else:
+                bevetelszegedi()
+
+            
+
 
