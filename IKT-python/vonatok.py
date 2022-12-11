@@ -76,9 +76,6 @@ def jegyfoglalas():
                 sor = sorSzama
                 helySzukseg = jegyekSzama
                 uloszam = ulesSzama
-                helySzama = 1
-                foglalthelySor = 0
-                foglalthelyOszlop = 0
                 print("A jegyfoglalás előtti helyek: ")
                 with open('bbHelyekMasolat.txt', 'r', encoding='utf-8') as forrasfajl:
                     for elem in forrasfajl:
@@ -121,9 +118,6 @@ def jegyfoglalas():
                 sor = sorSzama
                 helySzukseg = jegyekSzama
                 uloszam = ulesSzama
-                helySzama = 1
-                foglalthelySor = 0
-                foglalthelyOszlop = 0
                 print("A jegyfoglalás előtti helyek: ")
                 with open('bbHelyekMasolat.txt', 'r', encoding='utf-8') as forrasfajl:
                     for elem in forrasfajl:
@@ -167,9 +161,6 @@ def jegyfoglalas():
                 sor = sorSzama
                 helySzukseg = jegyekSzama
                 uloszam = ulesSzama
-                helySzama = 1
-                foglalthelySor = 0
-                foglalthelyOszlop = 0
                 print("A jegyfoglalás előtti helyek: ")
                 with open('bszHelyekMasolat.txt', 'r', encoding='utf-8') as forrasfajl:
                     for elem in forrasfajl:
