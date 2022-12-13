@@ -67,14 +67,12 @@ def jegyfoglalas():
     if vonat not in ["bb","bd","bsz"]:
         print("Nincs ilyen vonat+")
         return False
-    jegyekSzama=int(input("Adja meg a foglalni kívánt jegyek számát:"))
     ulesSzama=int(input("Adja meg a foglalni kívánt ülés számát(1-4):"))
     sorSzama=int(input("Adja meg a foglalni kívánt üléssor számát:"))
-    if jegyekSzama > 0 and sorSzama > 0:
+    if sorSzama < 5 and sorSzama > 0:
         for i in range(1):
             if vonat=="bb":
                 sor = sorSzama
-                helySzukseg = jegyekSzama
                 uloszam = ulesSzama
                 print("A jegyfoglalás előtti helyek: ")
                 with open('bbHelyekMasolat.txt', 'r', encoding='utf-8') as forrasfajl:
@@ -87,39 +85,37 @@ def jegyfoglalas():
                     for sorok in forrasfajl:
                         adatok = sorok.strip().split(";")
                         bblista.append(adatok)
-                    with open('bbHelyekMasolat.txt', 'w', encoding='utf-8') as kifajl:
-                        for i in range(12):
-                            for j in range(5):
-                                if(helySzukseg > 1 and  helySzukseg < 5 and i == (sor-1) and j == (uloszam-1)):
-                                    while(helySzukseg > 0):
-                                            helySzukseg-=1
-                                            print('X', end = ';', file = kifajl)
-                                elif(i == (sor-1) and j == (uloszam-1) and bblista[i][j] != "1"):
-                                    print('X', end=";", file = kifajl)
-                                elif(j == 4):
-                                    print(i+1, end ="", file = kifajl)
-                                elif(bblista[i][j] == "1" and j !=4):
-                                    print('X', end=";", file = kifajl)
-                                else:
-                                    print('0', end = ';', file = kifajl)
-                            print('', file = kifajl)
-                        kifajl.close()    
-                with open('bbHelyekMasolat.txt','r') as elsofajl, open('bbHelyek.txt','w') as masodikfajl:
-                    for elem in elsofajl:
-                        masodikfajl.write(elem)
-                print("A jegyfoglalás utáni helyek: ")
-                with open('bbHelyekMasolat.txt', 'r', encoding='utf-8') as forrasfajl:
-                    for elem in forrasfajl:
-                        print(elem)                            
-                print()
+                if(bblista[sor-1][uloszam-1] != "X"):
+                        with open('bbHelyekMasolat.txt', 'w', encoding='utf-8') as kifajl:
+                            for i in range(12):
+                                for j in range(5):
+                                    if(i == (sor-1) and j == (uloszam-1) and bblista[i][j] != "1"):
+                                        print('X', end=";", file = kifajl)
+                                    elif(j == 4):
+                                        print(i+1, end ="", file = kifajl)
+                                    elif(bblista[i][j] == "X" and j !=4):
+                                        print('X', end=";", file = kifajl)
+                                    else:
+                                        print('0', end = ';', file = kifajl)
+                                print('', file = kifajl)
+                            kifajl.close()
+                        with open('bbHelyekMasolat.txt','r') as elsofajl, open('bbHelyek.txt','w') as masodikfajl:
+                            for elem in elsofajl:
+                                masodikfajl.write(elem)
+                        print("A jegyfoglalás utáni helyek: ")
+                        with open('bbHelyekMasolat.txt', 'r', encoding='utf-8') as forrasfajl:
+                            for elem in forrasfajl:
+                                print(elem)                            
+                        print()
+                else:
+                    print("Sajnálom, a hely már foglalt. Kérem, válasszon másik ülőhelyet!")
 
                 print()
             elif vonat=="bd":
                 sor = sorSzama
-                helySzukseg = jegyekSzama
                 uloszam = ulesSzama
                 print("A jegyfoglalás előtti helyek: ")
-                with open('bbHelyekMasolat.txt', 'r', encoding='utf-8') as forrasfajl:
+                with open('bdHelyekMasolat.txt', 'r', encoding='utf-8') as forrasfajl:
                     for elem in forrasfajl:
                         print(elem)                            
                 print()
@@ -129,37 +125,35 @@ def jegyfoglalas():
                     for sorok in forrasfajl:
                         adatok = sorok.strip().split(";")
                         bdlista.append(adatok)
-                    with open('bdHelyekMasolat.txt', 'w', encoding='utf-8') as kifajl:
-                        for i in range(12):
-                            for j in range(5):
-                                if(helySzukseg > 1 and  helySzukseg < 5 and i == (sor-1) and j == (uloszam-1)):
-                                    while(helySzukseg > 0):
-                                            helySzukseg-=1
-                                            print('X', end = ';', file = kifajl)
-                                elif(i == (sor-1) and j == (uloszam-1) and bdlista[i][j] != "1"):
-                                    print('X', end=";", file = kifajl)
-                                elif(j == 4):
-                                    print(i+1, end ="", file = kifajl)
-                                elif(bdlista[i][j] == "1" and j !=4):
-                                    print('X', end=";", file = kifajl)
-                                else:
-                                    print('0', end = ';', file = kifajl)
-                            print('', file = kifajl)
-                        kifajl.close()    
-                with open('bdHelyekMasolat.txt','r') as elsofajl, open('bbHelyek.txt','w') as masodikfajl:
-                    for elem in elsofajl:
-                        masodikfajl.write(elem)
-                print("A jegyfoglalás utáni helyek: ")
-                with open('bdHelyekMasolat.txt', 'r', encoding='utf-8') as forrasfajl:
-                    for elem in forrasfajl:
-                        print(elem)                            
-                print()
+                if(bdlista[sor-1][uloszam-1] != "X"):
+                        with open('bdHelyekMasolat.txt', 'w', encoding='utf-8') as kifajl:
+                            for i in range(12):
+                                for j in range(5):
+                                    if(i == (sor-1) and j == (uloszam-1) and bdlista[i][j] != "1"):
+                                        print('X', end=";", file = kifajl)
+                                    elif(j == 4):
+                                        print(i+1, end ="", file = kifajl)
+                                    elif(bdlista[i][j] == "X" and j !=4):
+                                        print('X', end=";", file = kifajl)
+                                    else:
+                                        print('0', end = ';', file = kifajl)
+                                print('', file = kifajl)
+                            kifajl.close()
+                        with open('bdHelyekMasolat.txt','r') as elsofajl, open('bdHelyek.txt','w') as masodikfajl:
+                            for elem in elsofajl:
+                                masodikfajl.write(elem)
+                        print("A jegyfoglalás utáni helyek: ")
+                        with open('bdHelyekMasolat.txt', 'r', encoding='utf-8') as forrasfajl:
+                            for elem in forrasfajl:
+                                print(elem)                            
+                        print()
+                else:
+                    print("Sajnálom, a hely már foglalt. Kérem, válasszon másik ülőhelyet!")
 
                 print()
 
             else: 
                 sor = sorSzama
-                helySzukseg = jegyekSzama
                 uloszam = ulesSzama
                 print("A jegyfoglalás előtti helyek: ")
                 with open('bszHelyekMasolat.txt', 'r', encoding='utf-8') as forrasfajl:
@@ -172,39 +166,38 @@ def jegyfoglalas():
                     for sorok in forrasfajl:
                         adatok = sorok.strip().split(";")
                         bszlista.append(adatok)
-                    with open('bszHelyekMasolat.txt', 'w', encoding='utf-8') as kifajl:
-                        for i in range(12):
-                            for j in range(5):
-                                if(helySzukseg > 1 and  helySzukseg < 5 and i == (sor-1) and j == (uloszam-1)):
-                                    while(helySzukseg > 0):
-                                            helySzukseg-=1
-                                            print('X', end = ';', file = kifajl)
-                                elif(i == (sor-1) and j == (uloszam-1) and bszlista[i][j] != "1"):
-                                    print('X', end=";", file = kifajl)
-                                elif(j == 4):
-                                    print(i+1, end ="", file = kifajl)
-                                elif(bszlista[i][j] == "1" and j !=4):
-                                    print('X', end=";", file = kifajl)
-                                else:
-                                    print('0', end = ';', file = kifajl)
-                            print('', file = kifajl)
-                        kifajl.close()    
-                with open('bszHelyekMasolat.txt','r') as elsofajl, open('bbHelyek.txt','w') as masodikfajl:
-                    for elem in elsofajl:
-                        masodikfajl.write(elem)
-                print("A jegyfoglalás utáni helyek: ")
-                with open('bszHelyekMasolat.txt', 'r', encoding='utf-8') as forrasfajl:
-                    for elem in forrasfajl:
-                        print(elem)                            
-                print()
+                if(bszlista[sor-1][uloszam-1] != "X"):
+                        with open('bszHelyekMasolat.txt', 'w', encoding='utf-8') as kifajl:
+                            for i in range(12):
+                                for j in range(5):
+                                    if(i == (sor-1) and j == (uloszam-1) and bszlista[i][j] != "1"):
+                                        print('X', end=";", file = kifajl)
+                                    elif(j == 4):
+                                        print(i+1, end ="", file = kifajl)
+                                    elif(bszlista[i][j] == "X" and j !=4):
+                                        print('X', end=";", file = kifajl)
+                                    else:
+                                        print('0', end = ';', file = kifajl)
+                                print('', file = kifajl)
+                            kifajl.close()
+                        with open('bszHelyekMasolat.txt','r') as elsofajl, open('bszHelyek.txt','w') as masodikfajl:
+                            for elem in elsofajl:
+                                masodikfajl.write(elem)
+                        print("A jegyfoglalás utáni helyek: ")
+                        with open('bszHelyekMasolat.txt', 'r', encoding='utf-8') as forrasfajl:
+                            for elem in forrasfajl:
+                                print(elem)                            
+                        print()
+                else:
+                    print("Sajnálom, a hely már foglalt. Kérem, válasszon másik ülőhelyet!")
 
                 print()
        
     else:
-        print("Ervenytelen jegy mennyiseg!")
+        print("Érvénytelen jegy mennyiség!")
         return False
 
-    print("Köszönjük a foglalást")
+    print("Köszönjük a foglalást!")
     return True    
 
 
