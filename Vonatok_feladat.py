@@ -1,3 +1,5 @@
+#Készítette: Gróf Richárd, Gyurka Dávid, Dér Olivér
+#Neumann János Technikum, 13.évfolyam, szoftver fejlesztő és tesztelő osztály
 """Van 3 vonat, mindegyik vonaton naponta 3x közlekedik.
 Mindegyik vonaton van 12 darab 4 személyes asztal.
 Egy darab vonatjegy 4000 Forint
