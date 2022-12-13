@@ -65,7 +65,7 @@ def kilepes():
 def jegyfoglalas():
     vonat=input("Adja meg a vonatot (bb, bd, bsz):")
     if vonat not in ["bb","bd","bsz"]:
-        print("Nincs ilyen vonat+")
+        print("Nincs ilyen vonat")
         return False
     ulesSzama=int(input("Adja meg a foglalni kívánt ülés számát(1-4):"))
     sorSzama=int(input("Adja meg a foglalni kívánt üléssor számát:"))
